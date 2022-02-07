@@ -1,6 +1,7 @@
 package com.dwteam.trip;
 
 import com.dwteam.driver_account.DriverAcc;
+import com.dwteam.location.Location;
 import com.dwteam.passenger_account.PassengerAcc;
 import lombok.Data;
 
@@ -28,4 +29,9 @@ public class Trip {
 
     @Column(name = "date")
     private Date data;
+
+
+    private Location lcation;
+
+
 }

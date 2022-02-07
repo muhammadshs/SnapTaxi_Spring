@@ -23,7 +23,7 @@ public class DriverService implements IDriverService {
         return driver.getId();
     }
 
-    @Override
+    /*@Override
     public void changeLocation(Double latitude, Double longitude,Long token) {
         Optional<Location> opLoc=locationRepository.findByLatitudeAndLongitude(latitude, longitude);
         Optional<Driver> op= driverRepository.findByDriverAcc_Id(token);
@@ -44,7 +44,7 @@ public class DriverService implements IDriverService {
             driverRepository.save(driver);
         }
 
-    }
+    }*/
 
     @Override
     public Boolean changeUserName(String userName) {

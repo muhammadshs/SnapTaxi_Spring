@@ -2,6 +2,7 @@ package com.dwteam.location;
 
 import com.dwteam.driver.Driver;
 import com.dwteam.passenger.Passenger;
+import com.dwteam.trip.Trip;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class Location {
 
     @OneToOne(mappedBy = "location")
     private Passenger passenger;
+
 
 
 
