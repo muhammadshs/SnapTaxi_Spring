@@ -1,7 +1,5 @@
 package com.dwteam.driver;
 
-import com.dwteam.driver_account.DriverAcc;
-import com.dwteam.location.Location;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,14 +22,18 @@ public class Driver {
     @Column(name = "phoneNumber",unique = true)
     private Long phoneNumber;
 
-    @Column(name = "onlineState")
-    private Boolean onlineState;
+    @Column(name = "driverLicense",unique = true)
+    private Long driverLicense;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_Location", referencedColumnName = "id_Location")
-    private Location location;
+    @Column(name = "state")
+    private Integer state;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_DriverAcc",referencedColumnName = "id_DriverAcc")
-    private DriverAcc driverAcc;
+    @Column(name = "balance")
+    private Double balance;
+
+    @Column(name = "myLat")
+    private Double myLat;
+
+    @Column(name = "myLong")
+    private Double myLong;
 }

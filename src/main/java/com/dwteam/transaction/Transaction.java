@@ -1,9 +1,8 @@
 package com.dwteam.transaction;
 
 import com.dwteam.driver.Driver;
-import com.dwteam.driver_account.DriverAcc;
 import com.dwteam.passenger.Passenger;
-import com.dwteam.passenger_account.PassengerAcc;
+import com.dwteam.trip.Trip;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,12 +21,12 @@ public class Transaction {
     @Column(name = "amount")
     private Double amount;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private PassengerAcc passengerAcc;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private DriverAcc driverAcc;
+    @OneToOne
+    @JoinColumn(name = "trip")
+    private Trip trip;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "date")
     private Date date;
 

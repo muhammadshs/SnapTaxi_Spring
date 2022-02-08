@@ -1,2 +1,16 @@
 server:
   port: 7777
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/niu
+    username: postgres
+    password: 30173017
+
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    show-sql: false

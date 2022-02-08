@@ -1,8 +1,6 @@
 package com.dwteam.passenger;
 
-import com.dwteam.driver_account.DriverAcc;
-import com.dwteam.location.Location;
-import com.dwteam.passenger_account.PassengerAcc;
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,14 +22,17 @@ public class Passenger {
     @Column(name = "phoneNumber",unique = true)
     private Long phoneNumber;
 
-    @Column(name = "onlineState")
-    private Boolean onlineState;
+    @Column(name = "state")
+    private Integer state;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_Location", referencedColumnName = "id_Location")
-    private Location location;
+    @Column(name = "balance")
+    private Double balance;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_PassengerAcc",referencedColumnName = "id_PassengerAcc")
-    private PassengerAcc passengerAcc;
+    @Column(name = "myLat")
+    private Double myLat;
+
+    @Column(name = "myLong")
+    private Double myLong;
+
+
 }

@@ -1,58 +1,44 @@
 package com.dwteam.driver;
 
-import com.dwteam.location.Location;
-import com.dwteam.location.LocationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.dwteam.trip.ITripService;
+import com.dwteam.trip.Trip;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
-public class DriverService implements IDriverService {
+public class DriverService implements IDriverService{
     DriverRepository driverRepository;
-    LocationRepository locationRepository;
-    @Autowired
-    public DriverService(DriverRepository driverRepository, LocationRepository locationRepository) {
-        this.driverRepository = driverRepository;
-        this.locationRepository = locationRepository;
-    }
-
+    ITripService tripService;
     @Override
     public Long login(String userName, String passWord) {
-        Driver driver = driverRepository.findByUserNameAndPassWord(userName, passWord).get();
+        Driver driver=driverRepository.findDriverByUserNameAndPassWord(userName, passWord);
         return driver.getId();
     }
 
-    /*@Override
-    public void changeLocation(Double latitude, Double longitude,Long token) {
-        Optional<Location> opLoc=locationRepository.findByLatitudeAndLongitude(latitude, longitude);
-        Optional<Driver> op= driverRepository.findByDriverAcc_Id(token);
-        Driver driver=op.get();
-        Location location;
-        if(opLoc.isEmpty()){
-            location=new Location();
-            location.setLatitude(latitude);
-            location.setLongitude(longitude);
-            driver.setLocation(locationRepository.save(location));
-            driverRepository.save(driver);
-        }
-        else{
-            location=opLoc.get();
-            location.setLongitude(longitude);
-            location.setLatitude(latitude);
-            driver.setLocation(location);
-            driverRepository.save(driver);
-        }
-
-    }*/
-
     @Override
-    public Boolean changeUserName(String userName) {
-        return null;
+    public void changeMyLocation(Long id,Double myLat, Double myLong) {
+        Optional<Driver> op=driverRepository.findById(id);
+        if(op.isPresent())
+        {
+            Driver driver=op.get();
+            driver.setMyLong(myLong);
+            driver.setMyLat(myLat);
+            driverRepository.save(driver);
+        }
     }
 
     @Override
-    public Boolean changePassWord(String passWord) {
+    public Boolean endTrip(Long id) {
+        Optional<Driver> op=driverRepository.findById(id);
+        Driver driver=op.get();
+        driver.setState(0);
+        driverRepository.save(driver);
+        Trip trip=tripService.selectTripWithDriver(driver,0);
+        trip.setState(1);
+        tripService.saveTrip(trip);
         return null;
     }
 }

@@ -1,8 +1,8 @@
 package com.dwteam.trip;
 
-import com.dwteam.driver_account.DriverAcc;
-import com.dwteam.location.Location;
-import com.dwteam.passenger_account.PassengerAcc;
+import com.dwteam.driver.Driver;
+import com.dwteam.passenger.Passenger;
+import com.dwteam.transaction.Transaction;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,17 +21,31 @@ public class Trip {
     private Double price;
 
     @ManyToOne
-    private PassengerAcc passengerAcc;
-
+    private Passenger passenger;
 
     @ManyToOne
-    private DriverAcc driverAcc;
+    private Driver driver;
+
+    @Column(name = "state")
+    private Integer state;
 
     @Column(name = "date")
-    private Date data;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
+    @Column(name = "sourceLat")
+    private Double sourceLat;
 
-    private Location lcation;
+    @Column(name = "sourceLong")
+    private Double sourceLong;
 
+    @Column(name = "targetLat")
+    private Double targetLat;
+
+    @Column(name = "targetLong")
+    private Double targetLong;
+
+    @OneToOne(mappedBy = "trip")
+    private Transaction transaction;
 
 }

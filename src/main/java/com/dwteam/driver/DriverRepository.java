@@ -3,10 +3,11 @@ package com.dwteam.driver;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface DriverRepository extends PagingAndSortingRepository<Driver,Long> {
-    Optional<Driver> findByUserNameAndPassWord(String userName, String passWord);
-    Optional<Driver> findByDriverAcc_Id(Long id);
+    Driver findDriverByUserNameAndPassWord(String userName,String passWord);
+    List<Driver> findByState(Integer state);
+
 }
