@@ -25,13 +25,13 @@ public class Trip {
 
     @ManyToOne
     private Driver driver;
-
+    //change to enum
     @Column(name = "state")
     private Integer state;
-
+    //change to prepersist
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private Date creatDate;
 
     @Column(name = "sourceLat")
     private Double sourceLat;
@@ -48,4 +48,9 @@ public class Trip {
     @OneToOne(mappedBy = "trip")
     private Transaction transaction;
 
+    @PrePersist
+    void dateSetter(){
+        creatDate=new Date();
+    }
+    //Controller Advice
 }

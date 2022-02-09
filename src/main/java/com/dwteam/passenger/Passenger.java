@@ -28,11 +28,11 @@ public class Passenger {
     @Column(name = "balance")
     private Double balance;
 
-    @Column(name = "myLat")
-    private Double myLat;
+    //@Column(name = "myLat")
+    //private Double myLat;
 
-    @Column(name = "myLong")
-    private Double myLong;
+    //@Column(name = "myLong")
+    //private Double myLong;
 
 
 }

@@ -9,7 +9,7 @@ public interface ITripService {
     void changeDriver(Long id);
     void changeLocations(Long id,Double targetLong,Double targetLat,Double sourceLong,Double sourceLat);
     void changePrice(Long id);
-    void changeState(Long id);
+    void changeState(Long id,Integer state);
     Trip selectTrip(Long id);
     Trip selectTripWithDriver(Driver driver,Integer state);
     void saveTrip(Trip trip);

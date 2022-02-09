@@ -2,6 +2,7 @@ package com.dwteam.driver;
 
 import lombok.Data;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -36,4 +37,9 @@ public class Driver {
 
     @Column(name = "myLong")
     private Double myLong;
+
+    //@PrePersist
+    //@CreationTimestamp
+    //@PreUpdate
+    //@PostLoad
 }

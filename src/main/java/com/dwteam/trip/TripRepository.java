@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface TripRepository extends PagingAndSortingRepository<Trip,Long> {
     Boolean deleteByPassenger_IdAndState(Long passengerId , Integer state);
-    Optional<Trip> findTripByPassenger(Passenger passenger);
-    Optional<Trip> findTripById(Long id);
-    Optional<Trip> findTripByDriverAndState(Driver driver, Integer state);
+    Optional<Trip> findByPassenger(Passenger passenger);
+    Optional<Trip> findById(Long id);
+    Optional<Trip> findByDriverAndState(Driver driver, Integer state);
 }
