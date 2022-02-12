@@ -1,5 +1,6 @@
 package com.dwteam.driver;
 
+import com.dwteam.exception.NotFindExp;
 import com.dwteam.trip.ITripService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class DriverService implements IDriverService {
             driver.setState(0);
             driverRepository.save(driver);
         }, () -> {
-            System.err.println("cant find driver");
+            throw new NotFindExp("Cant find Driver with this id");
         });
 
     }
@@ -40,7 +41,7 @@ public class DriverService implements IDriverService {
     public Driver searchDriver(Integer state) {
         List<Driver> list = driverRepository.findAllByState(state);
         if (list.size()==0) {
-            System.err.println("cant find driver");
+            throw new NotFindExp("Cant find Driver with this id");
         }
 
         return list.get(getRandomNumber(0,list.size()));

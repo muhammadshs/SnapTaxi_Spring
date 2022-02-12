@@ -3,7 +3,9 @@ package com.dwteam.trip;
 import com.dwteam.driver.Driver;
 import com.dwteam.passenger.Passenger;
 import com.dwteam.transaction.Transaction;
+import jdk.jfr.Timestamp;
 import lombok.Data;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name = "tbl_Trip")
 @Data
+@Audited
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +32,9 @@ public class Trip {
     @Column(name = "state")
     private Integer state;
     //change to prepersist
+    //time stamp
     @Column(name = "date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date creatDate;
 
     @Column(name = "sourceLat")

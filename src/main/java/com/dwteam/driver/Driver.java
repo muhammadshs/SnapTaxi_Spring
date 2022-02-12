@@ -1,12 +1,14 @@
 package com.dwteam.driver;
 
 import lombok.Data;
+import org.hibernate.envers.Audited;
 
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@Audited
 @Table(name = "tbl_Driver")
 public class Driver {
     @Id
@@ -32,11 +34,11 @@ public class Driver {
     @Column(name = "balance")
     private Double balance;
 
-    @Column(name = "myLat")
-    private Double myLat;
+   // @Column(name = "myLat")
+   // private Double myLat;
 
-    @Column(name = "myLong")
-    private Double myLong;
+    //@Column(name = "myLong")
+    //private Double myLong;
 
     //@PrePersist
     //@CreationTimestamp

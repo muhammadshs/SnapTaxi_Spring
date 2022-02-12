@@ -1,5 +1,6 @@
 package com.dwteam.passenger;
 
+import com.dwteam.exception.NotFindExp;
 import com.dwteam.trip.Trip;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class PassengerService implements IPassengerService{
             passengerRepository.save(passenger1);
 
         },//custom exception
-                ()->{System.err.println("eeer");});
+                ()->{throw new NotFindExp("Cant find Passenger with this id");});
 
 
     }

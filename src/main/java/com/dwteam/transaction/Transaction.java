@@ -4,12 +4,14 @@ import com.dwteam.driver.Driver;
 import com.dwteam.passenger.Passenger;
 import com.dwteam.trip.Trip;
 import lombok.Data;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Data
+@Audited
 @Table(name = "tbl_Transaction")
 public class Transaction {
 

@@ -2,6 +2,7 @@ package com.dwteam.trip;
 
 import com.dwteam.driver.Driver;
 import com.dwteam.driver.DriverService;
+import com.dwteam.exception.NotFindExp;
 import com.dwteam.passenger.Passenger;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -45,7 +46,7 @@ public class TripService implements ITripService {
             trip1.setDriver(driverService.searchDriver(0));
             tripRepository.save(trip1);
         }, () -> {
-            System.out.println("error");
+            throw new NotFindExp("Cant find Trip with this id");
         });
 
     }
@@ -60,7 +61,7 @@ public class TripService implements ITripService {
             trip.setTargetLong(targetLong);
             tripRepository.save(trip);
         }, () -> {
-            System.err.println("errr");
+            throw new NotFindExp("Cant find Trip with this id");
         });
 
     }
@@ -73,7 +74,7 @@ public class TripService implements ITripService {
                     tripRepository.save(trip);
                 },
                 () -> {
-                    System.err.println("errr");
+                    throw new NotFindExp("Cant find Trip with this id");
                 });
 
     }
@@ -85,7 +86,7 @@ public class TripService implements ITripService {
                     tripRepository.save(trip1);
                 },
                 () -> {
-                    System.err.println("errr");
+                    throw new NotFindExp("Cant find Trip with this id");
                 });
 
     }
@@ -96,8 +97,8 @@ public class TripService implements ITripService {
         if (optionalTrip.isPresent()) {
             return optionalTrip.get();
         } else {
-            System.err.println("errrr");
-            return null;
+            throw new NotFindExp("Cant find Trip with this id");
+
         }
     }
 
@@ -107,8 +108,8 @@ public class TripService implements ITripService {
         if (optionalTrip.isPresent()) {
             return optionalTrip.get();
         } else {
-            System.err.println("errrr");
-            return null;
+            throw new NotFindExp("Cant find Trip with this id");
+
         }
     }
 

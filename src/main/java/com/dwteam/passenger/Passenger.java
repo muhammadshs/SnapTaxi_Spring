@@ -2,10 +2,12 @@ package com.dwteam.passenger;
 
 
 import lombok.Data;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 @Entity
 @Data
+@Audited
 @Table(name = "tbl_Passenger")
 public class Passenger {
     @Id
