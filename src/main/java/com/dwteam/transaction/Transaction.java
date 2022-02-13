@@ -7,6 +7,7 @@ import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -16,10 +17,10 @@ import java.util.Date;
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id")
     private Long id;
-
+    @NotNull
     @Column(name = "amount")
     private Double amount;
 
@@ -27,7 +28,7 @@ public class Transaction {
     @OneToOne
     @JoinColumn(name = "trip")
     private Trip trip;
-
+    @NotNull
     @Temporal(TemporalType.DATE)
     @Column(name = "date")
     private Date date;

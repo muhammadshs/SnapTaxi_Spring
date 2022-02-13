@@ -8,6 +8,7 @@ import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -16,36 +17,38 @@ import java.util.Date;
 @Audited
 public class Trip {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Trip")
     private Long id;
-
+    @NotNull
     @Column(name = "price")
     private Double price;
-
+    @NotNull
     @ManyToOne
     private Passenger passenger;
-
+    @NotNull
     @ManyToOne
     private Driver driver;
     //change to enum
+    @NotNull
     @Column(name = "state")
     private Integer state;
     //change to prepersist
     //time stamp
+    @NotNull
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date creatDate;
-
+    @NotNull
     @Column(name = "sourceLat")
     private Double sourceLat;
-
+    @NotNull
     @Column(name = "sourceLong")
     private Double sourceLong;
-
+    @NotNull
     @Column(name = "targetLat")
     private Double targetLat;
-
+    @NotNull
     @Column(name = "targetLong")
     private Double targetLong;
 

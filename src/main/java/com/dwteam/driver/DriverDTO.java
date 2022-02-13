@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.persistence.Column;
 @Data
 public class DriverDTO {
-
     @ApiModelProperty(required = false, hidden = true)
     private Long id;
     @ApiModelProperty(required = true, hidden = false)
@@ -21,8 +20,8 @@ public class DriverDTO {
     @ApiModelProperty(required = true, hidden = false)
     private Long driverLicense;
 
-    @ApiModelProperty(required = true, hidden = false)
-    private Integer state;
+    //@ApiModelProperty(required = true, hidden = false)
+    // private Integer state;
 
     @ApiModelProperty(required = true, hidden = false)
     private Double balance;

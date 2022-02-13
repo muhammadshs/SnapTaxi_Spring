@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class DriverService implements IDriverService {
     DriverRepository driverRepository;
-    ITripService tripService;
+
 
     @Override
     public Long login(String userName, String passWord) {
@@ -48,9 +48,11 @@ public class DriverService implements IDriverService {
     }
 
     @Override
-    public void saveDriver(Driver driver) {
-        driverRepository.save(driver);
+    public Driver saveDriver(Driver driver) {
+        return driverRepository.save(driver);
     }
+
+
 
 
 }

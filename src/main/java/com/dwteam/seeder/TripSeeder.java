@@ -30,7 +30,7 @@ public class TripSeeder implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         for (int i=1;i<500;i++){
             Trip trip=new Trip();
-            trip.setDate(new Date());
+          //  trip.setDate(new Date());
             Optional<Driver> op=driverRepository.findById(Long.valueOf(i));
             trip.setDriver(op.get());
             Optional<Passenger> op2=passengerRepository.findById(Long.valueOf(i));

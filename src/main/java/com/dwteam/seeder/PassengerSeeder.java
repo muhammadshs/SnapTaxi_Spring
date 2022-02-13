@@ -21,8 +21,8 @@ public class PassengerSeeder implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         for (int i=1;i<1000;i++){
             Passenger driver=new Passenger();
-            driver.setMyLat(2.333333+i);
-            driver.setMyLong(2.3333+i);
+           // driver.setMyLat(2.333333+i);
+           // driver.setMyLong(2.3333+i);
             driver.setPhoneNumber(9017321775l+i);
             driver.setBalance(3481347.844+i);
             driver.setPassWord("mx134577"+i);

@@ -23,8 +23,8 @@ public class DriverSeeder implements ApplicationRunner {
         for (int i=1;i<1000;i++){
             Driver driver=new Driver();
             driver.setDriverLicense(123456789l+i);
-            driver.setMyLat(2.333333+i);
-            driver.setMyLong(2.3333+i);
+           // driver.setMyLat(2.333333+i);
+           // driver.setMyLong(2.3333+i);
             driver.setPhoneNumber(9017321775l+i);
             driver.setBalance(3481347.844+i);
             driver.setPassWord("mx134577"+i);

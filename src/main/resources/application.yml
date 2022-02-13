@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/niu
+    url: jdbc:postgresql://localhost:5432/snapp_taxi
     username: postgres
     password: 30173017
 
@@ -12,5 +12,5 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     database: POSTGRESQL
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: false

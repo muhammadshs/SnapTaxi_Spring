@@ -6,5 +6,6 @@ public interface IDriverService {
     Long login(String userName,String passWord);
     void changeState(Long id,Integer state);
     Driver searchDriver(Integer state);
-    void saveDriver(Driver driver);
+    Driver saveDriver(Driver driver);
+
 }
