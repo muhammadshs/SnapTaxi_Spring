@@ -1,7 +1,10 @@
 package com.dwteam.driver;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -9,15 +12,16 @@ import org.springframework.web.bind.annotation.*;
 public class DriverController {
     IDriverService iDriverService;
     DriverMapper driverMapper;
-    //response entity
-    //convert enter value to map
+
     @PostMapping(value = "/login")
-    public Long login(@RequestBody DriverDTO driverDTO){
-        return iDriverService.login(driverDTO.getUserName(),driverDTO.getPassWord());
+    public ResponseEntity<Long> login(@RequestBody Map<String,String> map){
+        Long id=iDriverService.login(map.get("userName"),map.get("passWord"));
+        return ResponseEntity.ok(id);
     }
-    // problem in dto and convert to entity
+
     @PutMapping(value = "/register")
-    public DriverDTO register(@RequestBody DriverDTO driverDTO){
-        return driverMapper.toDTO(iDriverService.saveDriver(driverMapper.toEntity(driverDTO)));
+    public ResponseEntity<DriverDTO> register(@RequestBody DriverDTO driverDTO){
+        DriverDTO d=driverMapper.toDTO(iDriverService.saveDriver(driverMapper.toEntity(driverDTO)));
+        return ResponseEntity.ok(d);
     }
 }

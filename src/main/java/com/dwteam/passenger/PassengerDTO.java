@@ -18,8 +18,8 @@ public class PassengerDTO {
     @ApiModelProperty(required = true, hidden = false)
     private Long phoneNumber;
 
-    @ApiModelProperty(required = true, hidden = false)
-    private Integer state;
+   // @ApiModelProperty(required = true, hidden = false)
+   // private Integer state;
 
     @ApiModelProperty(required = true, hidden = false)
     private Double balance;

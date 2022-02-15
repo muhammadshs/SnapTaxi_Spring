@@ -8,7 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface DriverRepository extends PagingAndSortingRepository<Driver,Long> {
-    Driver findDriverByUserNameAndPassWord(String userName,String passWord);
+    Optional<Driver> findByUserNameAndPassWord(String userName,String passWord);
     List<Driver> findAllByState( Integer state);
+    Boolean existsByUserNameOrDriverLicenseOrPhoneNumber(String userName,Long driverLicense,Long phoneNumber);
 
 }

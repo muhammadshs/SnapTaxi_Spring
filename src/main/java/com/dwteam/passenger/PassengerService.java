@@ -1,5 +1,6 @@
 package com.dwteam.passenger;
 
+import com.dwteam.exception.ConflictExp;
 import com.dwteam.exception.NotFindExp;
 import com.dwteam.trip.Trip;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,19 @@ public class PassengerService implements IPassengerService{
 
     @Override
     public Long login(String userName, String passWord) {
-        return null;
+        Optional<Passenger> op=passengerRepository.findByUserNameAndPassWord(userName,passWord);
+        if(op.isEmpty()){
+            throw new NotFindExp("cant find Passenger");
+        }
+        return op.get().getId();
+    }
+
+    @Override
+    public Passenger savePassenger(Passenger passenger) {
+        if (passengerRepository.existsByUserNameOrPhoneNumber(passenger.getUserName(),passenger.getPhoneNumber())){
+            throw new ConflictExp("this passenger exists");
+        }
+        return passengerRepository.save(passenger);
     }
 
 

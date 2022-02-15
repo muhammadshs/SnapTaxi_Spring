@@ -1,6 +1,8 @@
 package com.dwteam.driver;
 
+import com.dwteam.exception.ConflictExp;
 import com.dwteam.exception.NotFindExp;
+import com.dwteam.passenger.Passenger;
 import com.dwteam.trip.ITripService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,12 @@ public class DriverService implements IDriverService {
 
     @Override
     public Long login(String userName, String passWord) {
-        Driver driver = driverRepository.findDriverByUserNameAndPassWord(userName, passWord);
-        return driver.getId();
+        Optional<Driver> op=driverRepository.findByUserNameAndPassWord(userName,passWord);
+        if(op.isEmpty()){
+            throw new NotFindExp("cant find Passenger");
+        }
+        return op.get().getId();
+
     }
 
 
@@ -49,6 +55,9 @@ public class DriverService implements IDriverService {
 
     @Override
     public Driver saveDriver(Driver driver) {
+        if(driverRepository.existsByUserNameOrDriverLicenseOrPhoneNumber(driver.getUserName(),driver.getDriverLicense(),driver.getPhoneNumber())){
+            throw new ConflictExp("this driver exists");
+        }
         return driverRepository.save(driver);
     }
 

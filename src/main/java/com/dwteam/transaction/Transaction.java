@@ -26,7 +26,7 @@ public class Transaction {
 
 
     @OneToOne
-    @JoinColumn(name = "trip")
+    @JoinColumn(name = "trip",unique = true)
     private Trip trip;
     @NotNull
     @Temporal(TemporalType.DATE)
