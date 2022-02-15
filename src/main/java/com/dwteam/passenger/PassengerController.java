@@ -18,8 +18,8 @@ public class PassengerController {
         return ResponseEntity.ok(passengerDTO1);
     }
     @PostMapping(value = "/login")
-    public ResponseEntity<Long> login(@RequestBody Map<String,String> map){
-        Long id=passengerService.login(map.get("userName"), map.get("passWord"));
+    public ResponseEntity<Long> login(@RequestBody PassengerLoginDTO passengerLoginDTO){
+        Long id=passengerService.login(passengerLoginDTO.getUserName(), passengerLoginDTO.getPassWord());
         return ResponseEntity.ok(id);
     }
 

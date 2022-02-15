@@ -16,15 +16,9 @@ public class TripService implements ITripService {
     DriverService driverService;
 
     @Override
-    public Trip creatTrip(Passenger passenger, Driver driver, Double sourceLat, Double sourceLong, Double targetLat, Double targetLong) {
-        Trip trip = new Trip();
-        trip.setTargetLong(targetLong);
-        trip.setPassenger(passenger);
-        trip.setTargetLat(targetLat);
+    public Trip creatTrip(Trip trip) {
+
         trip.setPrice((double) getRandomNumber(10000, 200000));
-        trip.setDriver(driver);
-        trip.setSourceLong(sourceLong);
-        trip.setSourceLat(sourceLat);
         trip.setState(0);
         return tripRepository.save(trip);
     }
@@ -39,19 +33,9 @@ public class TripService implements ITripService {
         return tripRepository.deleteByPassenger_IdAndState(passengerId, state);
     }
 
-    @Override
-    public void changeDriver(Long id) {
-        tripRepository.findById(id).ifPresentOrElse(trip1 -> {
-            driverService.changeState(trip1.getDriver().getId(), 0);
-            trip1.setDriver(driverService.searchDriver(0));
-            tripRepository.save(trip1);
-        }, () -> {
-            throw new NotFindExp("Cant find Trip with this id");
-        });
 
-    }
 
-    @Override
+   /* @Override
     public void changeLocations(Long id, Double targetLong, Double targetLat, Double sourceLong, Double sourceLat) {
         Optional<Trip> op = tripRepository.findById(id);
         op.ifPresentOrElse(trip -> {
@@ -63,8 +47,7 @@ public class TripService implements ITripService {
         }, () -> {
             throw new NotFindExp("Cant find Trip with this id");
         });
-
-    }
+    }*/
 
     @Override
     public void changePrice(Long id) {

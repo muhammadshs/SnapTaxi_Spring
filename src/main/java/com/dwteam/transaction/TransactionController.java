@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TransactionController {
     ITransactionService iTransactionService;
     TransactionMapper transactionMapper;
-    @PutMapping(value = "/transction")
+    @PutMapping(value = "/transaction")
     public ResponseEntity<Void> payment(TransactionDTO transactionDTO){
         iTransactionService.payment(transactionMapper.toEntity(transactionDTO));
         return ResponseEntity.status(HttpStatus.CREATED).build();

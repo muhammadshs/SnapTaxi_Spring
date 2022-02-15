@@ -3,6 +3,7 @@ package com.dwteam.reserve;
 import com.dwteam.driver.Driver;
 import com.dwteam.driver.DriverService;
 import com.dwteam.driver.IDriverService;
+import com.dwteam.exception.NotFindExp;
 import com.dwteam.passenger.IPassengerService;
 import com.dwteam.passenger.PassengerService;
 import com.dwteam.trip.ITripService;
@@ -18,7 +19,7 @@ public class ReserveService implements IReserveService{
     private IPassengerService passengerService;
     private ITripService tripService;
     @Override
-    public Boolean endTrip(Long idTrip) {
+    public void endTrip(Long idTrip) {
         Trip trip=tripService.selectTrip(idTrip);
         Long driverId=trip.getDriver().getId();
         Long passengerId=trip.getPassenger().getId();
@@ -29,14 +30,16 @@ public class ReserveService implements IReserveService{
         //----------number 0 in state meaning passenger is free
         passengerService.changeState(passengerId,0);
 
-        return true;
+
 
     }
+    // this method 
     @Override
     public void changeDriver(Long id) {
-       Trip trip=tripService.selectTrip(id);
-       trip.setDriver(driverService.searchDriver(0));
-       tripService.saveTrip(trip);
+        Trip trip=tripService.selectTrip(id);
+            driverService.changeState(trip.getDriver().getId(), 0);
+            trip.setDriver(driverService.searchDriver(0));
+            tripService.saveTrip(trip);
 
     }
 

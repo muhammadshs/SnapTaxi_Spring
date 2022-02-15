@@ -1,14 +1,14 @@
 package com.dwteam.trip;
 
-import com.dwteam.driver.Driver;
-import com.dwteam.passenger.Passenger;
-import com.dwteam.transaction.Transaction;
+import com.dwteam.driver.DriverDTO;
+import com.dwteam.passenger.PassengerDTO;
 import io.swagger.annotations.ApiModelProperty;
-import jdk.jfr.Timestamp;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
+
 @Data
 public class TripDTO {
     @ApiModelProperty(required = false, hidden = true)
@@ -18,12 +18,12 @@ public class TripDTO {
     private Double price;
 
     @ApiModelProperty(required = true, hidden = false)
-    private Passenger passenger;
+    private PassengerDTO passenger;
 
     @ApiModelProperty(required = true, hidden = false)
-    private Driver driver;
+    private DriverDTO driverDTO;
 
-    @ApiModelProperty(required = true, hidden = false)
+    @ApiModelProperty(required = false, hidden = false)
     private Integer state;
 
     @ApiModelProperty(required = true, hidden = false)
@@ -41,9 +41,6 @@ public class TripDTO {
 
     @ApiModelProperty(required = true, hidden = false)
     private Double targetLong;
-
-    @ApiModelProperty(required = true, hidden = false)
-    private Transaction transaction;
 
 
 }

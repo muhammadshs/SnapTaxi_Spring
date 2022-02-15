@@ -30,8 +30,9 @@ public class Trip {
     @ManyToOne
     private Driver driver;
     //change to enum
+    //get check
     @NotNull
-    @Column(name = "state")
+    @Column(name = "state",columnDefinition="integer default '0'")
     private Integer state;
     //change to prepersist
     //time stamp

@@ -14,8 +14,8 @@ public class DriverController {
     DriverMapper driverMapper;
 
     @PostMapping(value = "/login")
-    public ResponseEntity<Long> login(@RequestBody Map<String,String> map){
-        Long id=iDriverService.login(map.get("userName"),map.get("passWord"));
+    public ResponseEntity<Long> login(@RequestBody DriverLoginDTO driverLoginDTO){
+        Long id=iDriverService.login(driverLoginDTO.getUserName(),driverLoginDTO.getPassWord());
         return ResponseEntity.ok(id);
     }
 

@@ -1,24 +1,15 @@
-package com.dwteam.transaction;
+package com.dwteam.driver;
 
-
-import com.dwteam.trip.TripDTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
-public class TransactionDTO {
+public class DriverLoginDTO {
     @ApiModelProperty(required = false, hidden = true)
     private Long id;
+    @ApiModelProperty(required = true, hidden = false)
+    private String userName;
 
     @ApiModelProperty(required = true, hidden = false)
-    private Double amount;
-
-
-    @ApiModelProperty(required = true, hidden = false)
-    private TripDTO tripDTO;
-
-    @ApiModelProperty(required = true, hidden = false)
-    private Date date;
+    private String passWord;
 }

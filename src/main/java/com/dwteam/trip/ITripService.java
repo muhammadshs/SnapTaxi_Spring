@@ -4,10 +4,9 @@ import com.dwteam.driver.Driver;
 import com.dwteam.passenger.Passenger;
 
 public interface ITripService {
-    Trip creatTrip(Passenger passenger, Driver driver,Double sourceLat,Double sourceLong,Double targetLat,Double targetLong);
+    Trip creatTrip(Trip trip);
     Boolean deleteBy(Long passengerId,Integer state);
-    void changeDriver(Long id);
-    void changeLocations(Long id,Double targetLong,Double targetLat,Double sourceLong,Double sourceLat);
+
     void changePrice(Long id);
     void changeState(Long id,Integer state);
     Trip selectTrip(Long id);
