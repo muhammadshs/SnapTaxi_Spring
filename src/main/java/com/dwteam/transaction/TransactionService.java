@@ -11,7 +11,7 @@ public class TransactionService implements ITransactionService{
     @Override
     public void payment(Transaction transaction) {
         if (transactionRepository.existsByTrip(transaction.getTrip())){
-            throw new ConflictExp("this trip have transaction");
+            throw new ConflictExp("this trip have transaction",this.getClass().getName());
         }
         transactionRepository.save(transaction);
     }

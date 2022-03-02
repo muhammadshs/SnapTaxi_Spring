@@ -1,5 +1,6 @@
 package com.dwteam.driver;
 
+import com.dwteam.jwt.TokenDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,11 @@ public class DriverController {
     DriverMapper driverMapper;
 
     @PostMapping(value = "/login")
-    public ResponseEntity<String> login(@RequestBody DriverLoginDTO driverLoginDTO){
+    public ResponseEntity<TokenDTO> login(@RequestBody DriverLoginDTO driverLoginDTO){
           String tokenStr=iDriverService.login(driverLoginDTO.getUserName(),driverLoginDTO.getPassWord());
-        return ResponseEntity.ok(tokenStr);
+        TokenDTO tokenDTO=new TokenDTO();
+        tokenDTO.setToken(tokenStr);
+        return ResponseEntity.ok(tokenDTO);
     }
 
     @PutMapping(value = "/register")

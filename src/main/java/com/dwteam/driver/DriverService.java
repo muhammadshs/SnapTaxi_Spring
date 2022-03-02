@@ -22,7 +22,7 @@ public class DriverService implements IDriverService {
     public String login(String userName, String passWord) {
         Optional<Driver> op=driverRepository.findByUserNameAndPassWord(userName,passWord);
         if(op.isEmpty()){
-            throw new NotFindExp("cant find Passenger");
+            throw new NotFindExp("cant find Passenger",this.getClass().getName());
         }
             Long id=op.get().getId();
         String tokenStr="";
@@ -42,7 +42,7 @@ public class DriverService implements IDriverService {
             driver.setState(0);
             driverRepository.save(driver);
         }, () -> {
-            throw new NotFindExp("Cant find Driver with this id");
+            throw new NotFindExp("Cant find Driver with this id",this.getClass().getName());
         });
 
     }
@@ -55,7 +55,7 @@ public class DriverService implements IDriverService {
     public Driver searchDriver(Integer state) {
         List<Driver> list = driverRepository.findAllByState(state);
         if (list.size()==0) {
-            throw new NotFindExp("Cant find Driver with this id");
+            throw new NotFindExp("Cant find Driver with this id",this.getClass().getName());
         }
 
         return list.get(getRandomNumber(0,list.size()));
@@ -64,7 +64,7 @@ public class DriverService implements IDriverService {
     @Override
     public Driver saveDriver(Driver driver) {
         if(driverRepository.existsByUserNameOrDriverLicenseOrPhoneNumber(driver.getUserName(),driver.getDriverLicense(),driver.getPhoneNumber())){
-            throw new ConflictExp("this driver exists");
+            throw new ConflictExp("this driver exists",this.getClass().getName());
         }
         return driverRepository.save(driver);
     }

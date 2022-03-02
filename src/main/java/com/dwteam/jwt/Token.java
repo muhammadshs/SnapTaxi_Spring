@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 public class Token {
     public String CreateToken_HS256(String userName,Long id) throws UnsupportedEncodingException {
         String jwt = null;
-             jwt= Jwts.builder().setIssuer("Mohammad").setSubject("").claim("userName",userName).claim("id",id).setSubject("Login").signWith(
+             jwt= Jwts.builder().setIssuer("Mohammad").claim("userName",userName).claim("id",id).setSubject("Login").signWith(
                     SignatureAlgorithm.HS256,
                     ConfigToken.secretToken.getBytes("UTF-8")
             ).compact();

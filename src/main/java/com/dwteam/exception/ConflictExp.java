@@ -1,11 +1,17 @@
 package com.dwteam.exception;
 
-public class ConflictExp extends RuntimeException{
-    public ConflictExp() {
-        super();
+import org.springframework.http.HttpStatus;
+
+public class ConflictExp extends BaseExp{
+    String className,massage;
+
+    public ConflictExp(String className, String massage) {
+        this.className = className;
+        this.massage = massage;
     }
 
-    public ConflictExp(String message) {
-        super(message);
+    @Override
+    public ExpDto mainExp() {
+        return new ExpDto(massage, HttpStatus.CONFLICT,className);
     }
 }

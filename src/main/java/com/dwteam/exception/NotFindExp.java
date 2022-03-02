@@ -1,11 +1,16 @@
 package com.dwteam.exception;
 
-public class NotFindExp extends RuntimeException{
-    public NotFindExp() {
-        super();
+import org.springframework.http.HttpStatus;
+
+public class NotFindExp extends BaseExp{
+    String massage,className;
+    public NotFindExp(String massage,String className) {
+        this.massage=massage;
+        this.className=className;
     }
 
-    public NotFindExp(String message) {
-        super(message);
+    @Override
+    public ExpDto mainExp() {
+        return new ExpDto(massage, HttpStatus.NOT_FOUND,className);
     }
 }

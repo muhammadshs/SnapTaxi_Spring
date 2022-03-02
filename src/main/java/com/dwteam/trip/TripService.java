@@ -57,7 +57,7 @@ public class TripService implements ITripService {
                     tripRepository.save(trip);
                 },
                 () -> {
-                    throw new NotFindExp("Cant find Trip with this id");
+                    throw new NotFindExp("Cant find Trip with this id",this.getClass().getName());
                 });
 
     }
@@ -69,7 +69,7 @@ public class TripService implements ITripService {
                     tripRepository.save(trip1);
                 },
                 () -> {
-                    throw new NotFindExp("Cant find Trip with this id");
+                    throw new NotFindExp("Cant find Trip with this id",this.getClass().getName());
                 });
 
     }
@@ -80,7 +80,7 @@ public class TripService implements ITripService {
         if (optionalTrip.isPresent()) {
             return optionalTrip.get();
         } else {
-            throw new NotFindExp("Cant find Trip with this id");
+            throw new NotFindExp("Cant find Trip with this id",this.getClass().getName());
 
         }
     }
@@ -91,7 +91,7 @@ public class TripService implements ITripService {
         if (optionalTrip.isPresent()) {
             return optionalTrip.get();
         } else {
-            throw new NotFindExp("Cant find Trip with this id");
+            throw new NotFindExp("Cant find Trip with this id",this.getClass().getName());
 
         }
     }
