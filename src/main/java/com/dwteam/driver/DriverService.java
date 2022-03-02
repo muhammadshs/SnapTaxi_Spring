@@ -2,11 +2,13 @@ package com.dwteam.driver;
 
 import com.dwteam.exception.ConflictExp;
 import com.dwteam.exception.NotFindExp;
+import com.dwteam.jwt.Token;
 import com.dwteam.passenger.Passenger;
 import com.dwteam.trip.ITripService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,16 +16,22 @@ import java.util.Optional;
 @Service
 public class DriverService implements IDriverService {
     DriverRepository driverRepository;
-
+    Token token;
 
     @Override
-    public Long login(String userName, String passWord) {
+    public String login(String userName, String passWord) {
         Optional<Driver> op=driverRepository.findByUserNameAndPassWord(userName,passWord);
         if(op.isEmpty()){
             throw new NotFindExp("cant find Passenger");
         }
-        return op.get().getId();
-
+            Long id=op.get().getId();
+        String tokenStr="";
+        try {
+            tokenStr=token.CreateToken_HS256(userName,id);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return tokenStr;
     }
 
 
