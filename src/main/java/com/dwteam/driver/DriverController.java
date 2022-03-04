@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/Driver")
+@RequestMapping(value = "/driver")
 public class DriverController {
     IDriverService iDriverService;
     DriverMapper driverMapper;
@@ -25,7 +25,7 @@ public class DriverController {
 
     @PutMapping(value = "/register")
     public ResponseEntity<Void> register(@RequestBody DriverDTO driverDTO){
-        DriverDTO d=driverMapper.toDTO(iDriverService.saveDriver(driverMapper.toEntity(driverDTO)));
+        iDriverService.saveDriver(driverMapper.toEntity(driverDTO));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

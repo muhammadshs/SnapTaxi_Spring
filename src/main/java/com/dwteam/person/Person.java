@@ -1,4 +1,4 @@
-package com.dwteam.common;
+package com.dwteam.person;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;

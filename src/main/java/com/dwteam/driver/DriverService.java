@@ -1,10 +1,9 @@
 package com.dwteam.driver;
 
-import com.dwteam.exception.ConflictExp;
-import com.dwteam.exception.NotFindExp;
+import com.dwteam.exceptions.ConflictExp;
+import com.dwteam.exceptions.NotFindExp;
+import com.dwteam.jwt.ConfigToken;
 import com.dwteam.jwt.Token;
-import com.dwteam.passenger.Passenger;
-import com.dwteam.trip.ITripService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +26,7 @@ public class DriverService implements IDriverService {
             Long id=op.get().getId();
         String tokenStr="";
         try {
-            tokenStr=token.CreateToken_HS256(userName,id);
+            tokenStr=token.CreateToken_HS256_Person(userName,id, ConfigToken.secretToken);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

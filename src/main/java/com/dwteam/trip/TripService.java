@@ -2,8 +2,7 @@ package com.dwteam.trip;
 
 import com.dwteam.driver.Driver;
 import com.dwteam.driver.DriverService;
-import com.dwteam.exception.NotFindExp;
-import com.dwteam.passenger.Passenger;
+import com.dwteam.exceptions.NotFindExp;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

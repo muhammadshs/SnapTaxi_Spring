@@ -1,6 +1,6 @@
 package com.dwteam.driver;
 
-import com.dwteam.common.Person;
+import com.dwteam.person.Person;
 import lombok.Data;
 import org.hibernate.envers.Audited;
 

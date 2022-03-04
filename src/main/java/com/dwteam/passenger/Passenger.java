@@ -1,12 +1,11 @@
 package com.dwteam.passenger;
 
 
-import com.dwteam.common.Person;
+import com.dwteam.person.Person;
 import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Data

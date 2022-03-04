@@ -1,4 +1,4 @@
-package com.dwteam.exception;
+package com.dwteam.exceptions;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,9 @@
 package com.dwteam.passenger;
 
-import com.dwteam.exception.ConflictExp;
-import com.dwteam.exception.NotFindExp;
+import com.dwteam.exceptions.ConflictExp;
+import com.dwteam.exceptions.NotFindExp;
+import com.dwteam.jwt.ConfigToken;
 import com.dwteam.jwt.Token;
-import com.dwteam.trip.Trip;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class PassengerService implements IPassengerService{
         }
         String tokenStr="";
         try {
-            tokenStr=token.CreateToken_HS256(userName,op.get().getId());
+            tokenStr=token.CreateToken_HS256_Person(userName,op.get().getId(), ConfigToken.secretToken);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/snapp_taxi
     username: postgres
-    password: 30173017
+    password: 1234
 
 
   jpa:

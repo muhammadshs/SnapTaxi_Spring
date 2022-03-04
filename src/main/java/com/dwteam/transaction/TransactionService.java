@@ -1,6 +1,6 @@
 package com.dwteam.transaction;
 
-import com.dwteam.exception.ConflictExp;
+import com.dwteam.exceptions.ConflictExp;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 @AllArgsConstructor

@@ -1,4 +1,4 @@
-package com.dwteam.exception;
+package com.dwteam.exceptions;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
