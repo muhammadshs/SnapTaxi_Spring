@@ -6,6 +6,7 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -16,7 +17,7 @@ public class Driver extends Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Driver")
     private Long id;
-
+    @Size(min = 11,max = 11)
     @NotNull
     @Column(name = "driverLicense", unique = true)
     private Long driverLicense;

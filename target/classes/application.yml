@@ -1,0 +1,16 @@
+server:
+  port: 7777
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/snapp_taxi
+    username: postgres
+    password: 1234
+
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    show-sql: false

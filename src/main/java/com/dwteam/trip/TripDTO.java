@@ -11,8 +11,6 @@ import java.util.Date;
 
 @Data
 public class TripDTO {
-    @ApiModelProperty(required = false, hidden = true)
-    private Long id;
 
     @ApiModelProperty(required = true, hidden = false)
     private Double price;

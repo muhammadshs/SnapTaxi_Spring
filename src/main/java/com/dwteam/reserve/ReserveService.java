@@ -49,4 +49,9 @@ public class ReserveService implements IReserveService{
         driverService.saveDriver(driver);
     }
 
+    @Override
+    public void createTrip(Long idPassenger) {
+        
+    }
+
 }

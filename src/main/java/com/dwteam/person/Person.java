@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
@@ -22,6 +23,7 @@ public class Person {
     @Column(name = "passWord")
     private String passWord;
     @NotNull
+    @Size(min = 10)
     @Column(name = "phoneNumber", unique = true)
     private Long phoneNumber;
     @NotNull
