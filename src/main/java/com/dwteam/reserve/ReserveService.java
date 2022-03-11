@@ -15,14 +15,15 @@ public class ReserveService implements IReserveService{
     private IPassengerService passengerService;
     private ITripService tripService;
     @Override
-    public void endTrip(Long idTrip) {
-        Trip trip=tripService.selectTrip(idTrip);
+    public void endTrip(Long idPassenger) {
+
+        Trip trip=tripService.findByPassengerIdAndState(idPassenger);
         Long driverId=trip.getDriver().getId();
         Long passengerId=trip.getPassenger().getId();
         //----------number 0 in state meaning driver is free
         driverService.changeState(driverId,0);
         //----------number 2 for cancel trip
-        tripService.changeState(idTrip,2);
+        tripService.changeState(trip.getId(),2);
         //----------number 0 in state meaning passenger is free
         passengerService.changeState(passengerId,0);
 

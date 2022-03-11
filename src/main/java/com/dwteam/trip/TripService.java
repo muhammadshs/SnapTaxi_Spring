@@ -32,6 +32,17 @@ public class TripService implements ITripService {
         return tripRepository.deleteByPassenger_IdAndState(passengerId, state);
     }
 
+    @Override
+    public Trip findByPassengerIdAndState(Long id) {
+        Optional<Trip> optionalTrip = tripRepository.findByPassenger_IdAndState(id,0);
+        if (optionalTrip.isPresent()) {
+            return optionalTrip.get();
+        } else {
+            throw new NotFindExp("Cant find Trip with this id",this.getClass().getName());
+
+        }
+    }
+
 
 
    /* @Override

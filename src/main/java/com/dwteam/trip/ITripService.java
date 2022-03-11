@@ -6,7 +6,7 @@ import com.dwteam.passenger.Passenger;
 public interface ITripService {
     Trip creatTrip(Trip trip);
     Boolean deleteBy(Long passengerId,Integer state);
-
+    Trip findByPassengerIdAndState(Long id);
     void changePrice(Long id);
     void changeState(Long id,Integer state);
     Trip selectTrip(Long id);

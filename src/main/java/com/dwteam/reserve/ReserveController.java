@@ -1,5 +1,6 @@
 package com.dwteam.reserve;
 
+import com.dwteam.person.PersonLoginCon;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class ReserveController {
     IReserveService iReserveService;
-    @PostMapping(value = "/endTrip")
-    public ResponseEntity<Void> endTrip(@RequestBody Long tripId){
-        iReserveService.endTrip(tripId);
+    PersonLoginCon personLoginCon;
+    @PostMapping(value = "/end_trip")
+    public ResponseEntity<Void> endTrip(/*@RequestBody Long passengerId*/){
+        iReserveService.endTrip(personLoginCon.getId());
         return ResponseEntity.status(HttpStatus.OK).build();
     }
     @PostMapping(value = "/change_driver")

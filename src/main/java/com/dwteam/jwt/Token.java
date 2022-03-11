@@ -20,6 +20,7 @@ public class Token {
     }
     public boolean validateToken(String token) {
         try {
+            System.out.println(token);
             Jwts.parser().setSigningKey(ConfigToken.secretToken).parseClaimsJws(token);
             return true;
         } catch (JwtException | IllegalArgumentException e) {
